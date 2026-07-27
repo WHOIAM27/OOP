@@ -1,7 +1,6 @@
 
 //EXP3
 
-
 #include<iostream>
 using namespace std;
 class publications
@@ -102,3 +101,4 @@ class disc : public publications
             cout<<"playing time is:",pagecount;
         }
 };
+
