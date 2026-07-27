@@ -1,4 +1,3 @@
-
 //EXP3
 
 #include<iostream>
