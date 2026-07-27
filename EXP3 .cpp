@@ -1,103 +1,129 @@
-//EXP3
-
 #include<iostream>
+#include<string>
 using namespace std;
+
 class publications
 {
-    protected:
-        float price;
-        string title;
-    
-    public:
-        void details()
-        {
-            cout<<"enter the title:";
-            cin>>title;
-            
-            cout<<"enter price:";
-            cin>>price;
+protected:
+    float price;
+    string title;
 
-            if (price<0)
+public:
+    void details()
+    {
+        try
+        {
+            cout << "Enter the title: ";
+            cin >> ws;
+            getline(cin, title);
+
+            cout << "Enter price: ";
+            cin >> price;
+
+            if(price < 0)
                 throw price;
-        
         }
-        void display()
+        catch(...)
         {
-            cout<<"the tiltle of book is:",title;
-            cout<<"the price of book is:",price;
-
+            cout << "Invalid price entered!" << endl;
+            setting_zero();
         }
+    }
 
-        void setting_zero()
-        {
-            title="invalid";
-            price=0;
-            
-        }
+    void display()
+    {
+        cout << "Title : " << title << endl;
+        cout << "Price : " << price << endl;
+    }
+
+    void setting_zero()
+    {
+        title = "Invalid";
+        price = 0;
+    }
 };
-
 
 class book : public publications
 {
-    private:
-        int pagecount;
+private:
+    int pagecount;
 
-    public:
-        void details_book()
-        {
-            try
-            {
-                void
-                cout<<"enter page numbers=";
-                cin>>pagecount;
-                if (pagecount<0)
-                    throw pagecount;
-            }
-            catch(...........)
-            {
-            cout<<"Invalid pagecount input! enter valid enteties";
-            cout<<"pagecount=0";
-            }
-            
-        }
+public:
+    void details_book()
+    {
+        details();
 
-        void display_book()
+        try
         {
-            cout<<"**********book details**********";
-            details();
-            cout<<"page count is:",pagecount;
+            cout << "Enter page count: ";
+            cin >> pagecount;
+
+            if(pagecount < 0)
+                throw pagecount;
         }
+        catch(...)
+        {
+            cout << "Invalid page count entered!" << endl;
+            pagecount = 0;
+        }
+    }
+
+    void display_book()
+    {
+        cout << "\n********** BOOK DETAILS **********" << endl;
+        display();
+        cout << "Page Count : " << pagecount << endl;
+    }
 };
-
 
 class disc : public publications
 {
-    private:
-        int time;
+private:
+    int time;
 
-    public:
-        void details_disc()
-        {
-            try
-            {   details();
-                cout<<"enter time of playing=";
-                cin>>time;
-                if (time<0)
-                    throw time;
-            }
-            catch(...........)
-            {
-            cout<<"Invalid time input! enter valid enteties";
-            cout<<"time of playing=0";
-            }
-            
-        }
+public:
+    void details_disc()
+    {
+        details();
 
-        void display_disc()
+        try
         {
-            cout<<"**********disc details**********";
-            details();
-            cout<<"playing time is:",pagecount;
+            cout << "Enter playing time (minutes): ";
+            cin >> time;
+
+            if(time < 0)
+                throw time;
         }
+        catch(...)
+        {
+            cout << "Invalid playing time entered!" << endl;
+            time = 0;
+        }
+    }
+
+    void display_disc()
+    {
+        cout << "\n********** DISC DETAILS **********" << endl;
+        display();
+        cout << "Playing Time : " << time << " minutes" << endl;
+    }
 };
 
+int main()
+{
+    book b;
+    disc d;
+
+    cout << "Enter Book Details" << endl;
+    b.details_book();
+
+    cout << "\nEnter Disc Details" << endl;
+    d.details_disc();
+
+    cout << "\nDisplaying Details\n";
+
+    b.display_book();
+    d.display_disc();
+
+    return 0;
+}
