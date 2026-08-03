@@ -20,3 +20,25 @@ public:
         cout << "Student Destructor Called" << endl;
     }
 };
+
+class Sports {
+protected:
+    int sportsMarks;
+public:
+    Sports() {
+        sportsMarks = 0;
+        cout << "Sports Default Constructor Called" << endl;
+    }
+    Sports(int m) {
+        sportsMarks = m;
+        cout << "Sports Parameterized Constructor Called" << endl;
+    }
+    Sports(const Sports &s) {
+        sportsMarks = s.sportsMarks;
+        cout << "Sports Copy Constructor Called" << endl;
+    }
+    ~Sports() {
+        cout << "Sports Destructor Called" << endl;
+    }
+};
+
