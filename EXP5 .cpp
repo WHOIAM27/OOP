@@ -68,3 +68,21 @@ public:
         cout << "Result Destructor Called" << endl;
     }
 };
+
+
+int main() {
+    cout << "\n===== Default Constructor =====\n";
+    Result r1;
+    r1.display();
+
+    cout << "\n===== Parameterized Constructor =====\n";
+    Result r2(101, 25, 450);
+    r2.display();
+
+    cout << "\n===== Copy Constructor =====\n";
+    Result r3(r2);
+    r3.display();
+
+    cout << "\nProgram Ends..." << endl;
+    return 0;
+}
