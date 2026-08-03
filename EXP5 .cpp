@@ -42,3 +42,29 @@ public:
     }
 };
 
+
+class Result : public Student, public Sports {
+private:
+    int totalMarks;
+public:
+    Result() : Student(), Sports() {
+        totalMarks = 0;
+        cout << "Result Default Constructor Called" << endl;
+    }
+    Result(int r, int s, int t) : Student(r), Sports(s) {
+        totalMarks = t;
+        cout << "Result Parameterized Constructor Called" << endl;
+    }
+    Result(const Result &obj) : Student(obj), Sports(obj) {
+        totalMarks = obj.totalMarks;
+        cout << "Result Copy Constructor Called" << endl;
+    }
+    void display() {
+        cout << "\nRoll No : " << rollNo;
+        cout << "\nSports Marks : " << sportsMarks;
+        cout << "\nTotal Marks : " << totalMarks << endl;
+    }
+    ~Result() {
+        cout << "Result Destructor Called" << endl;
+    }
+};
